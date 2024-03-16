@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela de Aluguéis</title>
+</head>
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        width: 80%;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+        color: #007bff;
+        text-align: center;
+    }
+
+    table {
+        background-color: #fff;
+        width: 100%;
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+
+    th{
+        border: 1px solid #007bff;
+        padding: 8px;
+        color: #fff;
+    }
+
+    td {
+        border: 1px solid #007bff;
+        padding: 8px;
+        color: #0c0c0c;
+    }
+
+    thead {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .botaoRetornar {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn-secondary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+        background-color: #0056b3;
+    }
+
+    a {
+        color: #000;
+        text-decoration: none;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 47, 255, 0.3);
+    }
+
+    a:hover {
+        text-decoration: underline;
+        box-shadow: none;
+    }
+</style>
+
+<body>
+
+<script type="text/javascript">
+    function returnMenu(){
+        window.location = "[[@{/menu}]]";
+    }
+</script>
+
+<div class="container">
+    <h2>Tabela de Movimentação de Veículos</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th style="color: #fff;">Placa do Veículo</th>
+            <th style="color: #fff;">Data</th>
+            <th style="color: #fff;">Hora</th>
+            <th style="color: #fff;">Tipo de Movimento</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <th:block th:each="registro : ${listRegistro}">
+            <tr>
+                <td th:text="${registro.id}"></td>
+                <td th:text="${registro.placaR}"></td>
+                <td th:text="${registro.dataR}"></td>
+                <td th:text="${registro.horaR}"></td>
+                <td th:text="${registro.tipoR}"></td>
+
+                <td>
+                    <a th:href="@{'/menu/editar-registro/' + ${registro.id}}">Editar</a>
+                    <a th:href="@{'/menu/remover-registro/' + ${registro.id}}">Remover</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+    <div class="botaoRetornar">
+        <button type="button" class="btn-secondary" onclick="returnMenu()">Voltar ao menu</button>
+    </div>
+</div>
+
+</body>
+</html>

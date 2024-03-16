@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela de Veículos Cadastrados</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        table {
+            background-color: #fff;
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th{
+            border: 1px solid #007bff;
+            padding: 8px;
+            color: #fff;
+        }
+        td {
+            border: 1px solid #007bff;
+            padding: 8px;
+            color: #0c0c0c;
+        }
+
+        thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .botaoRetornar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-secondary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 47, 255, 0.3);
+        }
+
+        a:hover {
+            text-decoration: underline;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<script type="text/javascript">
+    function returnMenu(){
+        window.location = "[[@{/menu}]]";
+    }
+</script>
+
+<div class="container">
+    <h2>Tabela de Veículos Cadastrados</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Placa</th>
+            <th>Numero da vaga</th>
+            <th>Cor</th>
+            <th>Modelo</th>
+            <th>Tipo</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <th:block th:each="veiculo : ${listVeiculo}">
+            <tr>
+                <td th:text="${veiculo.id}"></td>
+                <td th:text="${veiculo.placa}"></td>
+                <td th:text="${veiculo.vaga}"></td>
+                <td th:text="${veiculo.cor}"></td>
+                <td th:text="${veiculo.modelo}"></td>
+                <td th:text="${veiculo.tipo}"></td>
+                <td>
+                    <a th:href="@{'/menu/editar-veiculo/' + ${veiculo.id}}">Editar</a>
+                    <a th:href="@{'/menu/remover-veiculo/' + ${veiculo.id}}">Remover</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+    <div class="botaoRetornar">
+        <button type="button" class="btn-secondary" onclick="returnMenu()">Voltar ao menu</button>
+    </div>
+</div>
+
+</body>
+</html>

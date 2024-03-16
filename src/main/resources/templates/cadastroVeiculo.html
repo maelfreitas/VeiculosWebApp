@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Cadastro de Veiculos</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="#333" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 20,0 10,10"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px;
+            padding-right: 30px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px 0;
+            font-size: 1.2rem;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+
+        .btn-secondary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+</head>
+<body>
+<script type="text/javascript">
+    function returnMenu(){
+        window.location = "[[@{/menu}]]";
+    }
+</script>
+    <main>
+        <h1>Cadastro de Veículos </h1>
+        <div class="card">
+            <p>Insira as informações do veículo:</p>
+            <form th:action="@{/menu/salvar-veiculo}" method="post" th:object="${veiculo}">
+                <input type="hidden" th:field="*{id}">
+                <label>Placa do Veículo</label>
+                <input type="text" th:field="*{placa}" placeholder="Placa do veículo">
+
+                <label>Vaga associada</label>
+                <input type="text" th:field="*{vaga}" placeholder="Numero da vaga">
+
+                <label>Cor do Veículo</label>
+                <input type="text" th:field="*{cor}" placeholder="Cor do veículo">
+
+                <label>Modelo do Veículo</label>
+                <input type="text" th:field="*{modelo}" placeholder="Modelo do veículo">
+
+                <label>Tipo do Veículo</label>
+                <select th:field="*{tipo}">
+                    <option value="" hidden>Selecione o tipo</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Hatch">Hatchback</option>
+                    <option value="Picape">Picape</option>
+                    <option value="Caminhão">Caminhão</option>
+                    <option value="Moto">Moto</option>
+                </select>
+                
+                <div class="button-container">
+                    <button type="submit" class="btn">Salvar</button>
+                    <button type="button" class="btn-secondary" onclick="returnMenu()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

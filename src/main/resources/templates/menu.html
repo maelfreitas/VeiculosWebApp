@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Vagas</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #f0f8ff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+        }
+
+        .container button {
+            padding: 15px;
+            font-size: 1.2em;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4169e1;
+            text-align: center;
+        }
+
+        button {
+            border: none;
+            border-radius: 5px;
+            background-color: #4169e1;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1e90ff;
+        }
+
+        a {
+            color: #4169e1;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h1>GERENCIAMENTO DE VAGAS</h1>
+
+<div class="container text-center">
+
+    <button type="button" onclick="location.href='/menu/cadastroVeiculo'">Cadastro de Veículos</button>
+    <button type="button" onclick="location.href='/menu/tabelaVeiculo'">Exibir Cadastro</button>
+    <button type="button" onclick="location.href='/menu/cadastroAluguel'">Aluguel de Vaga</button>
+    <button type="button" onclick="location.href='/menu/tabelaAluguel'">Exibir Aluguel</button>
+    <button type="button" onclick="location.href='/menu/cadastroRegistro'">Registro de Entrada/Saída</button>
+    <button type="button" onclick="location.href='/menu/tabelaRegistro'">Exibir Registro</button>
+
+</div>
+
+</body>
+</html>
